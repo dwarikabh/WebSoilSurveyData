@@ -1,3 +1,17 @@
+# List of required packages
+required_packages <- c("shiny", "soilDB", "sf", "dplyr", "ggplot2", "tidyr", "leaflet")
+
+# Function to check and install packages if not already installed
+install_if_missing <- function(pkg) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    install.packages(pkg)
+  }
+}
+
+# Install required packages if missing
+invisible(sapply(required_packages, install_if_missing))
+
+#You can install the required packages manually.
 
 library(shiny)
 library(soilDB)
