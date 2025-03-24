@@ -7,29 +7,6 @@ library(ggplot2)
 library(tidyr)
 library(leaflet)
 
-library(httr)
-
-library(jsonlite)  # to parse JSON data
-
-# Example server-side API call
-get_soil_data <- function() {
-  # Replace the URL with the actual SDA API endpoint or any external API
-  url <- "https://sdmdataaccess.nrcs.usda.gov/Tabular/SoilData/summaryData"
-  
-  # Make the GET request
-  response <- GET(url)
-  
-  # Check if the request was successful (status code 200)
-  if (status_code(response) == 200) {
-    # Parse the response content (assuming JSON format)
-    data <- content(response, "text")  # raw content
-    parsed_data <- fromJSON(data)  # parsing JSON data into R object
-    return(parsed_data)
-  } else {
-    return(NULL)
-  }
-}
-
 # Define UI
 ui <- fluidPage(
   titlePanel("Soil Properties Viewer"),
